@@ -1,0 +1,72 @@
+/* HomePage.css */
+.background-image1 {
+  background-image: url("https://gardencare.uk.com/wp-content/uploads/2021/06/Court-Farm-Garden-Centre-The-Wisdom-of-Zen-Gardens-image.jpeg");
+  background-size: cover;
+  /* Ensures the image covers the entire section */
+  background-position: center;
+  /* Centers the image */
+  background-repeat: no-repeat;
+  /* Prevents the image from repeating */
+  background-color: #f0f0f0;
+  /* Fallback color */
+  width: 100%;
+  height: 100vh;
+  /* Ensure full height of the viewport */
+  position: relative;
+}
+
+header {
+  height: 10vh;
+  /* Adjust header height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  gap: 20px;
+}
+
+header .link {
+  text-decoration: none;
+  color: white;
+  margin-top: 100px;
+  text-align: center;
+  align-items: center;
+}
+
+.section1 {
+  height: 100vh;
+  /* The section will take up the rest of the space */
+}
+
+.section2 {
+  background-image: url('https://exploreintrosems.stanford.edu/sites/g/files/sbiybj24136/files/styles/card_1900x950/public/media/image/rocas_en_un_jardin_zen_japones_1.jpg?h=adbb760b&itok=Pj1pBxFd');
+  background-size: cover;
+  /* Ensures the second image covers the entire section */
+  background-position: center;
+  /* Centers the second image */
+  background-repeat: no-repeat;
+  /* Prevents the second image from repeating */
+  background-color: #f0f0f0;
+  /* Fallback color */
+  height: 100vh;
+  /* Adjust height as needed */
+  margin: 0;
+  padding: 0
+}
+
+.section3 {
+  background-image: url('https://thedesignstory.com/assets/uploader/editor/editor-photo-8--qfjk-1681401620.jpg?w=1000');
+  background-size: cover;
+  /* Ensures the second image covers the entire section */
+  background-position: center;
+  /* Centers the second image */
+  background-repeat: no-repeat;
+  /* Prevents the second image from repeating */
+  background-color: #f0f0f0;
+  /* Fallback color */
+  height: 100vh;
+  /* Adjust height as needed */
+  margin: 0;
+  padding: 0
+}
