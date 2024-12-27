@@ -1,5 +1,6 @@
 import './App.css'
 import { HomePage } from './HomePage/HomePage.jsx'
+import { Menu } from './Menu/Menu.jsx'
 
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       { 
         path: '/', 
         element: <HomePage/>
+      }, 
+      { 
+        path: '/Menu', 
+        element: <Menu />
       }
     ]
   }

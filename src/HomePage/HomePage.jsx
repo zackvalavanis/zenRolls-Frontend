@@ -7,7 +7,7 @@ export function HomePage() {
       <div className='background-image1'>
       <header className="header">
         <Link to='/' className='link'>Home </Link>
-        <Link to='/' className='link'>Menu</Link>
+        <Link to='/Menu' className='link'>Menu</Link>
       </header>
       <section className="section1"></section>
 
