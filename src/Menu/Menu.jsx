@@ -1,10 +1,13 @@
 import axios from 'axios';
 import './Menu.css';
 import { useState, useEffect } from 'react';
+import { Modal } from './Modal.jsx'
 
 export function Menu() {
   // State to hold food data, initially an empty array
   const [food, setFood] = useState([]);
+  const [isFoodVisible, setIsFoodVisible] = useState(false);
+  const [currentFood, setCurrentFood] = useState({});
 
   const handleIndex = async () => {
     console.log('handleIndex');
@@ -23,20 +26,52 @@ export function Menu() {
     handleIndex();
   }, []); 
 
+  const handleOrder = (event) => { 
+    event.preventDefault();
+    console.log('ordered item')
+  }
+
+  const handleShow = (food) => { 
+    console.log('handleShow', food)
+    setIsFoodVisible(true)
+    setCurrentFood(food)
+  }
+
+  const handleClose = () => { 
+    console.log('handleClose')
+    setIsFoodVisible(false)
+  }
+
+
   return (
     <div>
+      <div>
+        <h1>
+          Order for Delivery Below
+        </h1>
+      </div>
       {Array.isArray(food) && food.length > 0 ? ( 
         food.map((item, index) => ( 
           <div key={index}>
             <h1>{item.name}</h1>
             <h1>{item.price}</h1>
             <p>{item.description}</p>
-            <img src={item.image_url}></img>
+            <img className="image" src={item.image_url}></img>
+            <div className='button-container'>
+            <button className='order-button' onClick={handleOrder}>Order</button>
+            <button className='more-info-button' onClick={() => handleShow(item)}>More info</button>
+            </div>
           </div>
         ))
       ) : (
         <p>Loading foods...</p>
       )}
+      <Modal show={isFoodVisible} onClose={handleClose}>
+        <h1>{currentFood.name}</h1>
+        <p>{currentFood.description}</p>
+        <img className='image' src={currentFood.image_url} alt={currentFood.name} />
+        <p>Price: {currentFood.price}</p>
+      </Modal>
     </div>
   );
 }

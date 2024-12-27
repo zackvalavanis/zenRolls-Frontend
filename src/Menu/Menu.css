@@ -1,0 +1,13 @@
+.image {
+  height: 250px;
+  width: 250px;
+}
+
+.order-button {
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
