@@ -2,18 +2,20 @@ import axios from 'axios';
 import './Menu.css';
 import { useState, useEffect } from 'react';
 import { Modal } from './Modal.jsx'
+import { Header } from '../Header/Header.jsx'
 
 export function Menu() {
   // State to hold food data, initially an empty array
   const [food, setFood] = useState([]);
   const [isFoodVisible, setIsFoodVisible] = useState(false);
   const [currentFood, setCurrentFood] = useState({});
+  const apiKey = import.meta.env.VITE_API_KEY
 
   const handleIndex = async () => {
     console.log('handleIndex');
     try {
       // Fetch data from the API
-      const response = await axios.get('http://localhost:3000/foods.json');
+      const response = await axios.get(`${apiKey}/foods.json`);
       console.log('Response', response.data);
       // Set the food data to state
       setFood(response.data);
@@ -26,25 +28,28 @@ export function Menu() {
     handleIndex();
   }, []); 
 
-  const handleOrder = (event) => { 
-    event.preventDefault();
-    console.log('ordered item')
-  }
-
+  
   const handleShow = (food) => { 
     console.log('handleShow', food)
     setIsFoodVisible(true)
     setCurrentFood(food)
   }
-
+  
   const handleClose = () => { 
     console.log('handleClose')
     setIsFoodVisible(false)
   }
-
+  
+  const handleOrder = (event) => { 
+    event.preventDefault();
+    console.log('ordered item')
+  }
 
   return (
     <div>
+      <div>
+        <Header />
+      </div>
       <div>
         <h1>
           Order for Delivery Below
