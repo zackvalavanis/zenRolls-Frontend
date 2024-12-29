@@ -1,8 +1,21 @@
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  background-color: lavender;
+  margin: 0
+}
+
 .navigation-links a {
   text-decoration: none;
   color: inherit;
+  border-radius: 20px;
+  font-size: 20px;
 }
 
 .navigation-links a:hover {
-  background-color: blue;
+  background-color: lavender;
 }
