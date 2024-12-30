@@ -6,7 +6,7 @@ import { Header } from '../Header/Header.jsx'
 
 export function Menu() {
   // State to hold food data, initially an empty array
-  const [food, setFood] = useState([]);
+  const [category, setCategory] = useState([]);
   const [isFoodVisible, setIsFoodVisible] = useState(false);
   const [currentFood, setCurrentFood] = useState({});
   const apiKey = import.meta.env.VITE_API_KEY
@@ -15,10 +15,10 @@ export function Menu() {
     console.log('handleIndex');
     try {
       // Fetch data from the API
-      const response = await axios.get(`${apiKey}/foods.json`);
+      const response = await axios.get(`${apiKey}/categories.json`);
       console.log('Response', response.data);
       // Set the food data to state
-      setFood(response.data);
+      setCategory(response.data);
     } catch (error) {
       console.error("Error fetching data", error.message);
     }
@@ -55,27 +55,42 @@ export function Menu() {
           Order for Delivery Below
         </h1>
       </div>
-      {Array.isArray(food) && food.length > 0 ? ( 
-        food.map((item, index) => ( 
-          <div key={index}>
-            <h1>{item.name}</h1>
-            <h1>{item.price}</h1>
-            <p>{item.description}</p>
-            <img className="image" src={item.image_url}></img>
-            <div className='button-container'>
-            <button className='order-button' onClick={handleOrder}>Order</button>
-            <button className='more-info-button' onClick={() => handleShow(item)}>More info</button>
-            </div>
+      {Array.isArray(category) && category.length > 0 ? (
+        category.map((categoryItem) => (
+          <div key={categoryItem.id}>
+            <h1>{categoryItem.name}</h1>
+            {Array.isArray(categoryItem.foods) && categoryItem.foods.length > 0 ? (
+              categoryItem.foods.map((foodItem, foodIndex) => (
+                <div key={foodIndex}>
+                  <h2>{foodItem.name}</h2>
+                  <h3>Price: ${foodItem.price}</h3>
+                  <p>{foodItem.description}</p>
+                  <img className="image" src={foodItem.image_url} alt={foodItem.name} />
+                  <div className="button-container">
+                    <button className="order-button" onClick={handleOrder}>Order</button>
+                    <button className="more-info-button" onClick={() => handleShow(foodItem)}>More info</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No food items available</p>
+            )}
           </div>
         ))
       ) : (
-        <p>Loading foods...</p>
+        <p>Loading categories...</p>
       )}
+
+
       <Modal show={isFoodVisible} onClose={handleClose}>
-        <h1>{currentFood.name}</h1>
-        <p>{currentFood.description}</p>
-        <img className='image' src={currentFood.image_url} alt={currentFood.name} />
-        <p>Price: {currentFood.price}</p>
+        {currentFood && (
+          <>
+            <h1>{currentFood.name}</h1>
+            <p>{currentFood.description}</p>
+            <img className="image" src={currentFood.image_url} alt={currentFood.name} />
+            <p>Price: {currentFood.price}</p>
+          </>
+        )}
       </Modal>
     </div>
   );
