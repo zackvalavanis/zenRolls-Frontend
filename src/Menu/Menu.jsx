@@ -58,7 +58,7 @@ export function Menu() {
       {Array.isArray(category) && category.length > 0 ? (
         category.map((categoryItem) => (
           <div key={categoryItem.id}>
-            <h1>{categoryItem.name}</h1>
+            <h1> Category: {categoryItem.name}</h1>
             {Array.isArray(categoryItem.foods) && categoryItem.foods.length > 0 ? (
               categoryItem.foods.map((foodItem, foodIndex) => (
                 <div key={foodIndex}>
