@@ -40,7 +40,7 @@ export function Menu() {
     setIsFoodVisible(false)
   }
   
-  const handleOrder = (event) => { 
+  const handleAddToCart = (event) => { 
     event.preventDefault();
     console.log('ordered item')
   }
@@ -67,7 +67,7 @@ export function Menu() {
                   <p>{foodItem.description}</p>
                   <img className="image" src={foodItem.image_url} alt={foodItem.name} />
                   <div className="button-container">
-                    <button className="order-button" onClick={handleOrder}>Order</button>
+                    <button className="order-button" onClick={handleAddToCart}>Add to Cart</button>
                     <button className="more-info-button" onClick={() => handleShow(foodItem)}>More info</button>
                   </div>
                 </div>
