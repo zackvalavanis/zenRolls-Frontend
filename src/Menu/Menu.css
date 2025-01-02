@@ -1,13 +1,86 @@
-.image {
-  height: 250px;
-  width: 250px;
-}
-
-.order-button {
+/* Container for the sushi menu */
+.container-sushi-menu {
   display: flex;
+  flex-direction: column;
+  /* Stack categories vertically */
+  gap: 20px;
+  /* Space between categories */
 }
 
+/* Each category item */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  /* Arrange items vertically within each category */
+  width: 100%;
+  /* Take full width */
+  align-items: center;
+  /* Center the content */
+}
+
+/* Category name */
+.category-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Container for food items in a category */
+.food-items {
+  display: flex;
+  justify-content: start;
+  /* Align items horizontally */
+  gap: 20px;
+  /* Space between each food item */
+  flex-wrap: wrap;
+  /* Wrap if there are too many food items */
+}
+
+/* Individual food item */
+.food-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center food item content */
+  width: 300px;
+  /* Fixed width for each food item */
+  text-align: center;
+  /* Center text */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Image styling */
+.image {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Button container */
 .button-container {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.order-button,
+.more-info-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effects for buttons */
+.order-button:hover,
+.more-info-button:hover {
+  background-color: #45a049;
 }
