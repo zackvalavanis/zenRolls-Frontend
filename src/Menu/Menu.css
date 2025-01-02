@@ -72,8 +72,8 @@
 .order-button,
 .more-info-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: lavender;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -82,5 +82,5 @@
 /* Hover effects for buttons */
 .order-button:hover,
 .more-info-button:hover {
-  background-color: #45a049;
+  background-color: rgb(100, 100, 138);
 }
