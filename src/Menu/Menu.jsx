@@ -63,7 +63,7 @@ export function Menu() {
                     <div key={foodIndex} className="food-item">
                       <h3>{foodItem.name}</h3>
                       <h4>Price: ${foodItem.price}</h4>
-                      <p>{foodItem.description}</p>
+                      {/* <p>{foodItem.description}</p> */}
                       <img className="image" src={foodItem.image_url} alt={foodItem.name} />
                       <div className="button-container">
                         <button className="order-button" onClick={handleAddToCart}>Add to Cart</button>

@@ -20,7 +20,8 @@
 
 /* Category name */
 .category-name {
-  font-size: 1.5rem;
+  font-size: 2.0rem;
+  text-decoration: underline;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -42,7 +43,7 @@
   flex-direction: column;
   align-items: center;
   /* Center food item content */
-  width: 300px;
+  width: 250px;
   /* Fixed width for each food item */
   text-align: center;
   /* Center text */
