@@ -3,6 +3,7 @@ import './Menu.css';
 import { useState, useEffect } from 'react';
 import { Modal } from './Modal.jsx';
 import { Header } from '../Header/Header.jsx';
+import { Footer } from '../Footer/Footer.jsx'
 
 export function Menu() {
   // State to hold food data, initially an empty array
@@ -92,6 +93,7 @@ export function Menu() {
           </>
         )}
       </Modal>
+      <Footer/>
     </div>
   );
 }
