@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Modal } from './Modal.jsx';
 import { Header } from '../Header/Header.jsx';
 import { Footer } from '../Footer/Footer.jsx'
+import { Link } from 'react-router-dom'
 
 export function Menu() {
   // State to hold food data, initially an empty array
@@ -49,6 +50,9 @@ export function Menu() {
     <div>
       <div>
         <Header />
+      </div>
+      <div>
+        <a href="./src/assets/Menu/Menu.pdf" target="_blank">Menu</a>
       </div>
       <div>
         <h1>Order for Delivery Below</h1>
