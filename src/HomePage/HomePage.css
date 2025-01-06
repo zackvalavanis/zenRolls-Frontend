@@ -70,3 +70,23 @@ header .link {
   margin: 0;
   padding: 0
 }
+
+.section4 {
+  background-color: black;
+  background-size: cover;
+  /* Ensures the second image covers the entire section */
+  background-position: center;
+  /* Centers the second image */
+  background-repeat: no-repeat;
+  /* Prevents the second image from repeating */
+  height: 100vh;
+}
+
+.menu-image {
+  max-width: 80%;
+  height: auto;
+  /* Maintains aspect ratio */
+  margin: 0 auto;
+  /* Centers the image */
+  display: block;
+}

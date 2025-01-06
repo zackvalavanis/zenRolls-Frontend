@@ -52,7 +52,7 @@ export function Menu() {
         <Header />
       </div>
       <div>
-        <a href="./src/assets/Menu/Menu.pdf" target="_blank">Menu</a>
+        <a href="/Menu/Menu.pdf" target="_blank">Menu</a>
       </div>
       <div>
         <h1>Order for Delivery Below</h1>
