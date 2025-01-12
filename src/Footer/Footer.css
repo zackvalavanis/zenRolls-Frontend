@@ -1,0 +1,28 @@
+.footer-container {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  height: 300px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px
+}
+
+.pdf-menu {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.pdf-menu a:hover {
+  text-decoration: underline;
+}
+
+.pdf-menu a:visited {
+  color: white;
+  /* Prevents the link from turning purple after being visited */
+}

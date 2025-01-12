@@ -63,12 +63,6 @@ export function Menu() {
   return (
     <div>
     <Header />
-    <div>
-      <a href="/Menu/Menu.pdf" target="_blank">Menu</a>
-    </div>
-    <div>
-      <h1>Order for Delivery Below</h1>
-    </div>
     <div className='container-sushi-menu'>
       {Array.isArray(category) && category.length > 0 ? (
         category.map((categoryItem) => (

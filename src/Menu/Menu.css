@@ -5,6 +5,7 @@
   /* Stack categories vertically */
   gap: 20px;
   /* Space between categories */
+  margin-bottom: 100px;
 }
 
 /* Each category item */
