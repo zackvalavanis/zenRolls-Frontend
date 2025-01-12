@@ -1,6 +1,7 @@
 import './App.css'
 import { HomePage } from './HomePage/HomePage.tsx'
 import { Menu } from './Menu/Menu.jsx'
+import { Cart } from './Cart/Cart.tsx'
 
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       { 
         path: '/Menu', 
         element: <Menu />
+      },
+      { 
+        path: '/Cart', 
+        element: <Cart/>
       }
     ]
   }

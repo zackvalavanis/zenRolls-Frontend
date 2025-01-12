@@ -7,6 +7,7 @@ export function Header () {
       <div className='navigation-links'>
         <h1>
         <Link to='/'>Home</Link>
+        <Link to='/Cart'>Your Cart</Link>
         </h1>
       </div>
     </div>

@@ -2,6 +2,6 @@ import React from 'react'
 
 export function Footer() {
   return (
-    <h1>hello</h1>
+    <h1>Copywrite Zen Rolls 2024</h1>
   )
 }
