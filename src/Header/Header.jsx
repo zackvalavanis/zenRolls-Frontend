@@ -4,12 +4,21 @@ import './Header.css'
 export function Header () { 
   return ( 
     <div className='header-container'>
-      <div className='navigation-links'>
-        <h1>
-        <Link to='/'>Home</Link>
-        <Link to='/Cart'>Your Cart</Link>
-        </h1>
+      <Link 
+        className='navigation-1' 
+        to='/'>
+          <img 
+            className='image-logo' 
+            src='./Menu/Zen_Rolls_Logo.png'
+            alt='Zen Rolls Logo'
+            >
+          </img>
+        </Link>
+        <Link 
+          className='navigation-2' 
+          to='/Cart'>
+          Your Cart
+        </Link>
       </div>
-    </div>
   )
 }

@@ -40,9 +40,23 @@ export function Menu() {
     setIsFoodVisible(false);
   };
   
-  const handleAddToCart = (event) => { 
+  const handleAddToCart = async (event, FoodId) => { 
     event.preventDefault();
     console.log('ordered item');
+    try {
+      const response = await axios.post(`${apiKey}/cart_items.json`, { 
+        food_id: FoodId, 
+        cart_id: 1,
+        quantity: 1
+      })
+      if(response.status === 201) {  
+        console.log('successfully added to cart', response.data)
+      } else { 
+        console.error('Failed to add item to cart.', response.status)
+      }
+    } catch(error) { 
+      console.error('Error adding item to cart.', error.response ? error.response.data : error.message)
+    }
   };
 
   return (
@@ -69,7 +83,7 @@ export function Menu() {
                       <h4>Price: ${foodItem.price}</h4>
                       <img className="image" src={foodItem.image_url} alt={foodItem.name} />
                       <div className="button-container">
-                        <button className="order-button" onClick={handleAddToCart}>Add to Cart</button>
+                        <button className="order-button" onClick={ (event) => handleAddToCart(event, foodItem.id)}>Add to Cart</button>
                         <button className="more-info-button" onClick={() => handleShow(foodItem)}>More info</button>
                       </div>
                     </div>

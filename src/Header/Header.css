@@ -5,17 +5,47 @@ h1 {
 }
 
 .header-container {
-  background-color: lavender;
-  margin: 0
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  margin: 0;
+
+}
+
+.navigation-links {
+  display: flex;
+  gap: 20px
 }
 
 .navigation-links a {
+  display: flex;
   text-decoration: none;
   color: inherit;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 20px;
 }
 
 .navigation-links a:hover {
-  background-color: lavender;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.image-logo {
+  height: 80px
+}
+
+.navigation-2 {
+  margin-left: auto;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+.navigation-2:hover {
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: black;
 }
