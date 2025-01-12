@@ -3,7 +3,7 @@ import './Menu.css';
 import { useState, useEffect } from 'react';
 import { Modal } from './Modal.jsx';
 import { Header } from '../Header/Header.jsx';
-import { Footer } from '../Footer/Footer.jsx'
+import { Footer } from '../Footer/Footer.tsx'
 import { Link } from 'react-router-dom'
 
 export function Menu() {

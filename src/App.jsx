@@ -1,5 +1,5 @@
 import './App.css'
-import { HomePage } from './HomePage/HomePage.jsx'
+import { HomePage } from './HomePage/HomePage.tsx'
 import { Menu } from './Menu/Menu.jsx'
 
 
