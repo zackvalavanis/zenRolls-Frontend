@@ -1,9 +1,7 @@
 import React from 'react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
-import { LoginPage } from './User_auth/LoginPage.jsx'
-// import { Logout } from './User_auth/Logout.jsx'
-import { SignupPage } from './User_auth/SignupPage.jsx'
+import { LogoutLink } from '../User_auth/LogoutLink.jsx'
 
 
 export function Footer() {
@@ -17,6 +15,7 @@ export function Footer() {
         <div className='link-pages'>
           <Link to='/LoginPage'>Login</Link>
           <Link to='/SignupPage'>Signup</Link>
+          <LogoutLink />
         </div>
       </div>
     </div>

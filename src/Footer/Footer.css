@@ -29,7 +29,17 @@
 
 .link-pages {
   display: flex;
+  text-decoration: none;
+  color: white;
   flex-direction: row;
   justify-content: center;
   gap: 10px
+}
+
+.link-pages a,
+.link-pages .react-router-dom__link {
+  text-decoration: none;
+  /* Remove underline */
+  color: white;
+  /* Set text color to white */
 }
