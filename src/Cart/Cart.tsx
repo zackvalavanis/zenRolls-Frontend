@@ -25,7 +25,21 @@ export function Cart() {
   },
     [cartId]);
 
+  const handleCheckout = (event) => {
+    event.preventDefault();
+    console.log('Ordered Items')
+  }
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`${apiKey}/cart_items/${id}.json`)
+      if (response.status === 200) {
+        setCartItems(cartItems.filter((item) => item.id !== id))
+      }
+    } catch (error) {
+      console.error("Error", error.message)
+    }
+  }
 
   return (
     <div>
@@ -33,14 +47,21 @@ export function Cart() {
       {cartItems.length > 0 ? (
         cartItems.map((cartItem, index) => (
           <div key={index}>
+            <p>{cartItem.id}</p>
             <p>{cartItem.food.name}</p>
             <p>Quantity: {cartItem.quantity}</p>
             <p>Price: ${cartItem.food.price}</p>
+            <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
           </div>
         ))
       ) : (
         <p>Your cart is empty</p>
       )}
+      <div>
+        <button onClick={handleCheckout}>
+          Checkout
+        </button>
+      </div>
     </div>
   )
 }
