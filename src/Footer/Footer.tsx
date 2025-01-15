@@ -14,7 +14,10 @@ export function Footer() {
         <a href="/Menu/Menu.pdf" target="_blank" rel="noopener noreferrer">Menu PDF</a>
         <p>Number: 847-8484-9888</p>
         <p>Email: ZenRolls@email.com</p>
-        <Link to='/LoginPage'>Login</Link>
+        <div className='link-pages'>
+          <Link to='/LoginPage'>Login</Link>
+          <Link to='/SignupPage'>Signup</Link>
+        </div>
       </div>
     </div>
   )
