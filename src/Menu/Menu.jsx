@@ -5,6 +5,7 @@ import { Modal } from './Modal.jsx';
 import { Header } from '../Header/Header.jsx';
 import { Footer } from '../Footer/Footer.tsx'
 
+
 export function Menu() {
   // State to hold food data, initially an empty array
   const [category, setCategory] = useState([]);
@@ -47,7 +48,6 @@ export function Menu() {
     try {
       const response = await axios.post(`${apiKey}/cart_items.json`, { 
         food_id: FoodId, 
-        cart_id: 1,
         quantity: quantity
       })
       if(response.status === 201) {  
