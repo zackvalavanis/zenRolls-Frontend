@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Modal } from './Modal.jsx';
 import { Header } from '../Header/Header.jsx';
 import { Footer } from '../Footer/Footer.tsx'
+import { Toast } from '../Components/Toast.jsx';
 
 
 export function Menu() {
@@ -13,6 +14,7 @@ export function Menu() {
   const [currentFood, setCurrentFood] = useState({});
   const [quantity, setQuantity] = useState(1)
   const apiKey = import.meta.env.VITE_API_KEY;
+  const [notification, setIsNotificationShowing] = useState(false)
 
   const handleIndex = async () => {
     console.log('handleIndex');
@@ -42,6 +44,10 @@ export function Menu() {
     setIsFoodVisible(false);
   };
 
+  const close = () => { 
+    setIsNotificationShowing(false)
+  }
+
   const handleAddToCart = async (event, FoodId, quantity) => { 
     event.preventDefault();
     console.log('ordered item');
@@ -52,6 +58,7 @@ export function Menu() {
       })
       if(response.status === 201) {  
         console.log('successfully added to cart', response.data)
+        setIsNotificationShowing(true)
       } else { 
         console.error('Failed to add item to cart.', response.status)
       }
@@ -106,6 +113,7 @@ export function Menu() {
       ) : (
         <p>Loading categories...</p>
       )}
+      <Toast notification={notification} close={close} setNotification={setIsNotificationShowing}/>
     </div>
 
       <Modal show={isFoodVisible} onClose={handleClose}>
