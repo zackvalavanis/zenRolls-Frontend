@@ -47,7 +47,6 @@ export function Cart() {
       {cartItems.length > 0 ? (
         cartItems.map((cartItem, index) => (
           <div key={index}>
-            <p>{cartItem.id}</p>
             <p>{cartItem.food.name}</p>
             <p>Quantity: {cartItem.quantity}</p>
             <p>Price: ${cartItem.food.price}</p>

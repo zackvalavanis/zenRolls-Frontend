@@ -12,9 +12,17 @@ export function Menu() {
   const [category, setCategory] = useState([]);
   const [isFoodVisible, setIsFoodVisible] = useState(false);
   const [currentFood, setCurrentFood] = useState({});
-  const [quantity, setQuantity] = useState(1)
+  const [quantities, setQuantities] = useState({})
   const apiKey = import.meta.env.VITE_API_KEY;
   const [notification, setIsNotificationShowing] = useState(false)
+  const [notificationDetails, setNotificationDetails] = useState(null)
+
+  const handleQuantityChange = (foodId, value) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [foodId]: value, // Dynamically update the quantity for the specific food item
+    }));
+  };
 
   const handleIndex = async () => {
     console.log('handleIndex');
@@ -48,9 +56,10 @@ export function Menu() {
     setIsNotificationShowing(false)
   }
 
-  const handleAddToCart = async (event, FoodId, quantity) => { 
+  const handleAddToCart = async (event, FoodId, foodName) => { 
     event.preventDefault();
-    console.log('ordered item');
+    console.log(foodName)
+    const quantity = quantities[FoodId] || 1; 
     try {
       const response = await axios.post(`${apiKey}/cart_items.json`, { 
         food_id: FoodId, 
@@ -58,6 +67,7 @@ export function Menu() {
       })
       if(response.status === 201) {  
         console.log('successfully added to cart', response.data)
+        setNotificationDetails({name: foodName, quantity})
         setIsNotificationShowing(true)
       } else { 
         console.error('Failed to add item to cart.', response.status)
@@ -82,14 +92,14 @@ export function Menu() {
                     <h3>{foodItem.name}</h3>
                     <h4>Price: ${foodItem.price}</h4>
                     <img className="image" src={foodItem.image_url} alt={foodItem.name} />
-                    <form onSubmit={(event) => handleAddToCart(event, foodItem.id, foodItem.quantity)}>
+                    <form onSubmit={(event) => handleAddToCart(event, foodItem.id, foodItem.name)}>
                       <div className="form-group">
                         Quantity: 
                         <input
                           type='number'
                           min='1'
-                          defaultValue={1}
-                          onChange={(event) => foodItem.quantity = event.target.value} // updates quantity on change
+                          value={quantities[foodItem.id] || 1} 
+                          onChange={(event) => handleQuantityChange(foodItem.id, Number(event.target.value))} // updates quantity on change
                         />
                       </div>
                       <div className="button-container">
@@ -113,7 +123,7 @@ export function Menu() {
       ) : (
         <p>Loading categories...</p>
       )}
-      <Toast notification={notification} close={close} setNotification={setIsNotificationShowing}/>
+      <Toast notification={notification} details={notificationDetails} close={close} setNotification={setIsNotificationShowing}/>
     </div>
 
       <Modal show={isFoodVisible} onClose={handleClose}>
