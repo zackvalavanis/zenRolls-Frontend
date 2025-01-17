@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import './Cart.css'
 
 export function Cart() {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -44,22 +45,33 @@ export function Cart() {
   return (
     <div>
       <h1>This is your cart</h1>
-      {cartItems.length > 0 ? (
-        cartItems.map((cartItem, index) => (
-          <div key={index}>
-            <p>{cartItem.food.name}</p>
-            <p>Quantity: {cartItem.quantity}</p>
-            <p>Price: ${cartItem.food.price}</p>
-            <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
-          </div>
-        ))
-      ) : (
-        <p>Your cart is empty</p>
-      )}
-      <div>
-        <button onClick={handleCheckout}>
-          Checkout
-        </button>
+      <div className='cart-container'>
+        {cartItems.length > 0 ? (
+          cartItems.map((cartItem, index) => (
+            <div key={index} className='cart-item'>
+              <img className='image-cart'
+                src={cartItem.food.image_url}
+                alt={cartItem.food.name}
+              />
+              <div className='item-details'>
+                <p>{cartItem.food.name}</p>
+                <p>Quantity: {cartItem.quantity}</p>
+                <p>Price: ${cartItem.food.price}</p>
+                <p>Total: </p>
+              </div>
+              <div className='item-actions'>
+                <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Your cart is empty</p>
+        )}
+        <div>
+          <button onClick={handleCheckout}>
+            Checkout
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,49 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 2fr;
+  /* Image, item details (name, quantity, price), actions */
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.image-cart {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.item-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.item-details p {
+  margin: 0;
+  text-align: left;
+}
+
+.item-actions {
+  grid-column: 5;
+  /* Makes the delete button appear in the last column */
+  text-align: right;
+}
+
+.item-quantity,
+.item-price {
+  text-align: left;
+}
+
+.item-actions {
+  text-align: right;
+}

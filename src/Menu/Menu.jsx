@@ -105,6 +105,7 @@ export function Menu() {
                       <div className="button-container">
                         <button type="submit" className="order-button">Add to Cart</button>
                         <button 
+                          type='button'
                           className="more-info-button" 
                           onClick={() => handleShow(foodItem)}
                         >
