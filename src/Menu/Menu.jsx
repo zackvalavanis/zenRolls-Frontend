@@ -124,7 +124,12 @@ export function Menu() {
       ) : (
         <p>Loading categories...</p>
       )}
-      <Toast notification={notification} details={notificationDetails} close={close} setNotification={setIsNotificationShowing}/>
+      <Toast 
+        notification={notification} 
+        details={notificationDetails} 
+        close={close} 
+        setNotification={setIsNotificationShowing}
+        type='add-to-cart'/>
     </div>
 
       <Modal show={isFoodVisible} onClose={handleClose}>

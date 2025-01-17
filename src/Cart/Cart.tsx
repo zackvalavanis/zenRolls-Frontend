@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Cart.css'
+import { Toast } from '../Components/Toast.jsx';
 
 export function Cart() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const cartId = 1
   const [cartItems, setCartItems] = useState([])
+  const [notification, setNotificationVisible] = useState(false)
 
 
   const cartIndex = async (cartId) => {
@@ -29,6 +31,7 @@ export function Cart() {
   const handleCheckout = (event) => {
     event.preventDefault();
     console.log('Ordered Items')
+    setNotificationVisible(true)
   }
 
   const handleDelete = async (id) => {
@@ -40,6 +43,10 @@ export function Cart() {
     } catch (error) {
       console.error("Error", error.message)
     }
+  }
+
+  const handleClose = () => {
+    setNotificationVisible(false)
   }
 
   return (
@@ -61,6 +68,12 @@ export function Cart() {
               </div>
               <div className='item-actions'>
                 <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
+                <Toast
+                  notification={notification}
+                  type='order-success'
+                  close={handleClose}
+                  setNotification={setNotificationVisible}
+                />
               </div>
             </div>
           ))
