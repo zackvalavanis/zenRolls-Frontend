@@ -6,17 +6,29 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: top;
+  align-items: flex-start;
+  /* Align content at the top */
   justify-content: right;
+  /* Center content horizontally */
   z-index: 1000;
-
 }
-
 
 .card-container {
   display: flex;
+  justify-content: space-between;
+  /* This ensures space between text and button */
   border: 1px solid black;
-  background: white;
+  border-radius: 5px;
+  background: rgba(60, 140, 50, 75);
   height: 5em;
   width: 30em;
+  color: lavender;
+  padding: 0 1em;
+}
+
+.close-button {
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  margin-top: 90%
 }

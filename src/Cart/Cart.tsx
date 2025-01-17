@@ -32,6 +32,9 @@ export function Cart() {
     event.preventDefault();
     console.log('Ordered Items')
     setNotificationVisible(true)
+    setTimeout(() => {
+      setNotificationVisible(false);
+    }, 2000)
   }
 
   const handleDelete = async (id) => {
@@ -45,9 +48,12 @@ export function Cart() {
     }
   }
 
+
+
   const handleClose = () => {
     setNotificationVisible(false)
   }
+
 
   return (
     <div>
@@ -71,8 +77,8 @@ export function Cart() {
                 <Toast
                   notification={notification}
                   type='order-success'
-                  close={handleClose}
                   setNotification={setNotificationVisible}
+                  close={handleClose}
                 />
               </div>
             </div>
