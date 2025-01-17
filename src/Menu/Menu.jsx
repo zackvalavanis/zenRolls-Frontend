@@ -69,6 +69,10 @@ export function Menu() {
         console.log('successfully added to cart', response.data)
         setNotificationDetails({name: foodName, quantity})
         setIsNotificationShowing(true)
+        setTimeout(() => { 
+          setIsNotificationShowing(false);
+        }, 2000);
+        return () => clearTimeout(timeoutId)
       } else { 
         console.error('Failed to add item to cart.', response.status)
       }
