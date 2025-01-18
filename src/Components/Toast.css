@@ -4,13 +4,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2) !important;
   display: flex;
   align-items: flex-start;
   /* Align content at the top */
   justify-content: right;
   /* Center content horizontally */
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .card-container {
@@ -19,10 +19,10 @@
   /* This ensures space between text and button */
   border: 1px solid black;
   border-radius: 5px;
-  background: rgba(60, 140, 50, 75);
+  background: rgba(0, 0, 0, 0.85);
   height: 5em;
   width: 30em;
-  color: lavender;
+  color: rgb(255, 255, 255);
   padding: 0 1em;
 }
 

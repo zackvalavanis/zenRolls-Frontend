@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomePage.css';
 import { Link } from 'react-router-dom'
+import { Footer } from '../Footer/Footer.tsx'
 
 export function HomePage() {
   return (
@@ -25,6 +26,7 @@ export function HomePage() {
           height='800px'
         />
       </section>
+      <Footer />
     </div>
   );
 }

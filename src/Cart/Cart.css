@@ -3,6 +3,19 @@
   flex-direction: column;
   gap: 20px;
   padding: 10px;
+  position: relative;
+}
+
+.cart-container.dimmed {
+  opacity: 0.5;
+  pointer-events: none;
+  /* Prevent interactions with the cart while toast is active */
+}
+
+.cart-container.blurred {
+  filter: blur(2px);
+  pointer-events: none;
+  /* Prevent interactions */
 }
 
 .cart-item {
