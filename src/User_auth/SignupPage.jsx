@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import './SignupPage.css'
 
 export function SignupPage() {
   const [errors, setErrors] = useState([]);
@@ -22,28 +23,38 @@ export function SignupPage() {
   };
 
   return (
-    <div id="signup">
-      <h1>Signup</h1>
+    <div className='signup-container' id="signup">
+      <div className='signup'>
+      <h1 className='signup-header'>Signup</h1>
+      <div>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
+      <div className='signup-form'>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          <label className='signup-label' htmlFor='name'>Name:</label>
+          <input className='signup-input' name="name" type="text" />
         </div>
         <div>
-          Email: <input name="email" type="email" />
+          <label className='signup-label' htmlFor='email'>Email:</label>
+          <input className='signup-input' name="email" type="email" />
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          <label className='signup-label' htmlFor='password'>Password:</label>
+          <input  className='signup-input' name="password" type="password" />
         </div>
         <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+          <label className='signup-label' htmlFor='Password confirmation'>Password confirmation:</label>
+          <input className='signup-input' name="password_confirmation" type="password" />
         </div>
-        <button type="submit">Signup</button>
+        <button className='signup-button' type="submit">Signup</button>
       </form>
+      </div>
+      </div>
     </div>
+  </div>
   );
 }

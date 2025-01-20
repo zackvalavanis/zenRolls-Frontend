@@ -1,4 +1,4 @@
-.login-page {
+.signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,27 +10,29 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.login {
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.signup {
   display: flex;
   flex-direction: column;
   border: solid black;
   border-radius: 20px;
-  height: 300px;
+  height: 500px;
   width: 500px;
   justify-content: center;
   text-align: center;
   margin: 0 auto;
 }
 
-.header-login {
-  text-decoration: underline;
-}
-
-
-.login-button {
+.signup-button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  padding: 10px 30px;
+  margin-top: 1em;
+  padding: 10px 40px;
   cursor: pointer;
   border-radius: 10px;
   background-color: rgb(51, 150, 81);
@@ -39,25 +41,20 @@
   justify-content: center;
 }
 
-.login-button:hover {
+.signup-button:hover {
   background-color: rgba(85, 173, 81, 0.835);
   color: black;
   border-color: rgba(0, 0, 0, 0.699);
 }
 
-.form div {
-  margin-top: 3px;
-  margin-bottom: 1em;
-  align-items: center;
-}
 
-.form-label {
+.signup-label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.form-label {
+.signup-label {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +62,7 @@
   width: 100%;
 }
 
-.form-input {
+.signup-input {
   padding: .25em;
   width: 50%;
   /* Adjust input width to be 100% of its container */

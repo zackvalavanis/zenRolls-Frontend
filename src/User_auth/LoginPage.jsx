@@ -41,12 +41,12 @@ export function LoginPage() {
       <div className='form'>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='Email'>Email:</label>
-            <input name="email" type="email" />
+            <label className='form-label' htmlFor='Email'>Email:</label>
+            <input className='form-input' name="email" type="email" />
           </div>
           <div>
-            <label htmlFor='password'>Password:</label>
-            <input name="password" type="password" />
+            <label className='form-label' htmlFor='password'>Password:</label>
+            <input className='form-input' name="password" type="password" />
           </div>
           <button className='login-button' type="submit">Login</button>
         </form>
