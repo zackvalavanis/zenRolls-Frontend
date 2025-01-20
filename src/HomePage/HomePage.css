@@ -16,7 +16,7 @@
 }
 
 header {
-  height: 40vh;
+  height: 37vh;
   /* Adjust header height */
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@ header .link {
   /* Centers the second image */
   background-repeat: no-repeat;
   /* Prevents the second image from repeating */
-  height: 70vh;
+  height: 80vh;
 }
 
 .menu-image {

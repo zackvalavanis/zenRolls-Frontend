@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Footer } from '../Footer/Footer.tsx'
 
 export function HomePage() {
+
   return (
     <div>
       <div className='background-image1'>

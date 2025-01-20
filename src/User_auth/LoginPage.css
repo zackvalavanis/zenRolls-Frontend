@@ -1,0 +1,77 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full viewport height */
+  width: 100%;
+  /* Full viewport width */
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+  border-radius: 20px;
+  height: 300px;
+  width: 500px;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.header-login {
+  text-decoration: underline;
+}
+
+
+button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(51, 150, 81);
+  border-color: rgba(0, 0, 0, 0.338);
+  color: white;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: rgba(85, 173, 81, 0.835);
+  color: black;
+  border-color: rgba(0, 0, 0, 0.699);
+}
+
+.form div {
+  margin-top: 2px;
+  margin-bottom: 1em;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  padding: .25em;
+  width: 100%;
+  /* Adjust input width to be 100% of its container */
+  border-color: rgba(0, 0, 0, 0.63);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  /* Center the text inside input fields */
+}
