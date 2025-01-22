@@ -14,8 +14,12 @@ useEffect(() => { console.log('Notification:', props.details)
           {props.type === 'add-to-cart' ? ( 
             <>
             <h1>
-              {props.details.quantity} {props.details.name} added to your cart
-            </h1>
+              {props.details.quantity > 1 ? 
+                `${props.details.quantity} ${props.details.name}'s have been added to your cart.`
+                : 
+                `${props.details.quantity} ${props.details.name} has been added to cart.`
+              }
+              </h1>
             <div>
               <button className='close-button' onClick={props.close}>Close</button>
             </div>
