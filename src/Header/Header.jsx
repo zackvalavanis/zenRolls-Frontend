@@ -16,7 +16,7 @@ export function Header () {
         </Link>
         <Link 
           className='navigation-2' 
-          to='/Cart'>
+          to='/cart'>
           Your Cart
         </Link>
       </div>

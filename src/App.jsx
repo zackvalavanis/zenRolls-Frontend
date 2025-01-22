@@ -1,6 +1,6 @@
 import './App.css'
 import { HomePage } from './HomePage/HomePage.tsx'
-import { Menu } from './Menu/Menu.jsx'
+import { Menu } from './Menu/Menu.tsx'
 import { Cart } from './Cart/Cart.tsx'
 import { LoginPage } from './User_auth/LoginPage.jsx'
 // import { Logout } from './User_auth/Logout.jsx'
@@ -23,19 +23,19 @@ const router = createBrowserRouter([
         element: <HomePage/>
       }, 
       { 
-        path: '/Menu', 
+        path: '/menu', 
         element: <Menu />
       },
       { 
-        path: '/Cart', 
+        path: '/cart', 
         element: <Cart/>
       }, 
       { 
-        path: '/LoginPage', 
+        path: '/login-page', 
         element: <LoginPage/>
       }, 
       { 
-        path: '/SignupPage', 
+        path: '/signup-page', 
         element: <SignupPage/>
       }
     ]
@@ -45,6 +45,7 @@ const router = createBrowserRouter([
 
 function App() {
  return ( 
+
   <RouterProvider router={router} />
  )
 }

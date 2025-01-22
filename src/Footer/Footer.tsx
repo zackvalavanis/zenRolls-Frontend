@@ -13,8 +13,8 @@ export function Footer() {
         <p>Number: 847-8484-9888</p>
         <p>Email: ZenRolls@email.com</p>
         <div className='link-pages'>
-          <Link to='/LoginPage'>Login</Link>
-          <Link to='/SignupPage'>Signup</Link>
+          <Link to='/login-page'>Login</Link>
+          <Link to='/signup-page'>Signup</Link>
           <LogoutLink />
         </div>
       </div>

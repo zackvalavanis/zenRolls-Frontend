@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Cart.css'
-import { Toast } from '../Components/Toast.jsx';
+import { Toast } from '../Components/Toast.tsx';
 
 export function Cart() {
   const apiKey = import.meta.env.VITE_API_KEY;
