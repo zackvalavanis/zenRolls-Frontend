@@ -4,7 +4,15 @@ import { useEffect, useState } from 'react'
 import './Cart.css'
 import { Toast } from '../Components/Toast.tsx';
 
-export function Cart() {
+type cartItem = {
+  cartItem: {
+    food: {
+      image: string;
+    }
+  }
+}
+
+export function Cart(cartItem: cartItem) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const cartId = 1
   const [cartItems, setCartItems] = useState([])
@@ -75,6 +83,11 @@ export function Cart() {
               <div className='item-actions'>
                 <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
                 <Toast
+                  details={{
+                    name: cartItem.food.name,
+                    quantity: cartItem.quantity,
+                    message: `Price ${cartItem.food.price}`,
+                  }}
                   notification={notification}
                   type='order-success'
                   setNotification={setNotificationVisible}
@@ -92,6 +105,6 @@ export function Cart() {
           </button>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

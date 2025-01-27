@@ -10,7 +10,8 @@ type Props = {
   }
   close: () => void;
   type: string;
-  notification: number;
+  notification: boolean;
+  setNotification: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Toast(props: Props) {
 
