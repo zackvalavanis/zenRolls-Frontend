@@ -15,17 +15,17 @@ type cartItem = {
 export function Cart(cartItem: cartItem) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const cartId = 1
-  const [cartItems, setCartItems] = useState([])
+  const [cart, setCart] = useState({})
   const [notification, setNotificationVisible] = useState(false)
 
 
   const cartIndex = async (cartId) => {
     try {
-      const response = await axios.get(`${apiKey}/cart_items.json`, {
+      const response = await axios.get(`${apiKey}/cart.json`, {
         params: { cart_id: cartId }
       })
       console.log(response.data)
-      setCartItems(response.data)
+      setCart(response.data)
     } catch (error) {
       console.error("Error fetching data", error.message);
     }
@@ -49,7 +49,7 @@ export function Cart(cartItem: cartItem) {
     try {
       const response = await axios.delete(`${apiKey}/cart_items/${id}.json`)
       if (response.status === 200) {
-        setCartItems(cartItems.filter((item) => item.id !== id))
+        setCart(cart.cart_items.filter((item) => item.id !== id))
       }
     } catch (error) {
       console.error("Error", error.message)
@@ -67,26 +67,27 @@ export function Cart(cartItem: cartItem) {
     <div>
       <h1>This is your cart</h1>
       <div className='cart-container'>
-        {cartItems.length > 0 ? (
-          cartItems.map((cartItem, index) => (
-            <div key={index} className='cart-item'>
+        {cart?.cart_items?.length > 0 ? (
+          cart?.cart_items?.map((cartItem) => (
+            <div key={cartItem.id} className='cart-item'>
+
               <img className='image-cart'
-                src={cartItem.food.image_url}
-                alt={cartItem.food.name}
+                src={cartItem.image_url}
+                alt={cartItem.name}
               />
               <div className='item-details'>
-                <p>{cartItem.food.name}</p>
+                <p>{cartItem.name}</p>
                 <p>Quantity: {cartItem.quantity}</p>
-                <p>Price: ${cartItem.food.price}</p>
+                <p>Price: ${cartItem.item_price}</p>
                 <p>Total: </p>
               </div>
               <div className='item-actions'>
                 <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
                 <Toast
                   details={{
-                    name: cartItem.food.name,
+                    name: cartItem.name,
                     quantity: cartItem.quantity,
-                    message: `Price ${cartItem.food.price}`,
+                    message: `Price ${cartItem.price}`,
                   }}
                   notification={notification}
                   type='order-success'
@@ -100,6 +101,7 @@ export function Cart(cartItem: cartItem) {
           <p>Your cart is empty</p>
         )}
         <div>
+          <p>Sum: ${cart.total_price}</p>
           <button onClick={handleCheckout}>
             Checkout
           </button>
