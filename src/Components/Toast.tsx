@@ -16,7 +16,7 @@ type Props = {
 export function Toast(props: Props) {
 
   useEffect(() => {
-    console.log('Notification:', props.details)
+    // console.log('Notification:', props.details)
   }, [props.details]);
 
   return (

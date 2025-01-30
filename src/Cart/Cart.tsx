@@ -24,8 +24,8 @@ export function Cart(cartItem: cartItem) {
       const response = await axios.get(`${apiKey}/cart.json`, {
         params: { cart_id: cartId }
       })
-      console.log(response.data)
       setCart(response.data)
+      console.log(response.data)
     } catch (error) {
       console.error("Error fetching data", error.message);
     }
@@ -38,7 +38,6 @@ export function Cart(cartItem: cartItem) {
 
   const handleCheckout = (event) => {
     event.preventDefault();
-    console.log('Ordered Items')
     setNotificationVisible(true)
     setTimeout(() => {
       setNotificationVisible(false);
@@ -47,14 +46,22 @@ export function Cart(cartItem: cartItem) {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`${apiKey}/cart_items/${id}.json`)
+      const response = await axios.delete(`${apiKey}/cart_items/${id}.json`);
       if (response.status === 200) {
-        setCart(cart.cart_items.filter((item) => item.id !== id))
+        console.log("Deleting item with ID:", id);
+        if (!id) {
+          console.error("Error: Invalid ID");
+          return;
+        }
+        setCart((prevCart) => ({
+          ...prevCart,
+          cart_items: prevCart.cart_items.filter((item) => item.id !== id),
+        }));
       }
     } catch (error) {
-      console.error("Error", error.message)
+      console.error("Error deleting item", error.message);
     }
-  }
+  };
 
 
 
