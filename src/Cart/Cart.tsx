@@ -85,8 +85,8 @@ export function Cart(cartItem: cartItem) {
               <div className='item-details'>
                 <p>{cartItem.name}</p>
                 <p>Quantity: {cartItem.quantity}</p>
-                <p>Price: ${cartItem.item_price}</p>
-                <p>Total: </p>
+                <p>Price: ${cartItem.price}</p>
+                <p>Total: {cart.total_price} </p>
               </div>
               <div className='item-actions'>
                 <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
