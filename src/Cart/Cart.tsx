@@ -17,6 +17,7 @@ export function Cart(cartItem: cartItem) {
   const cartId = 1
   const [cart, setCart] = useState({})
   const [notification, setNotificationVisible] = useState(false)
+  const [totalPrice, setTotalPrice] = useState(0)
 
 
   const cartIndex = async (cartId) => {
@@ -25,7 +26,8 @@ export function Cart(cartItem: cartItem) {
         params: { cart_id: cartId }
       })
       setCart(response.data)
-      console.log(response.data)
+      setTotalPrice(response.data.total_price || 0)
+      console.log(response.data.total_price)
     } catch (error) {
       console.error("Error fetching data", error.message);
     }
@@ -53,10 +55,14 @@ export function Cart(cartItem: cartItem) {
           console.error("Error: Invalid ID");
           return;
         }
-        setCart((prevCart) => ({
-          ...prevCart,
-          cart_items: prevCart.cart_items.filter((item) => item.id !== id),
-        }));
+        setCart((prevCart) => {
+          const updatedCart = {
+            ...prevCart,
+            cart_items: prevCart.cart_items.filter((item) => item.id !== id),
+          };
+          setTotalPrice(updatedCart.cart_items.reduce((sum, item) => sum + item.price * item.quantity, 0)); // Recalculate total price
+          return updatedCart;
+        });
       }
     } catch (error) {
       console.error("Error deleting item", error.message);
@@ -86,7 +92,7 @@ export function Cart(cartItem: cartItem) {
                 <p>{cartItem.name}</p>
                 <p>Quantity: {cartItem.quantity}</p>
                 <p>Price: ${cartItem.price}</p>
-                <p>Total: {cart.total_price} </p>
+                <p>Total: {cartItem.item_price} </p>
               </div>
               <div className='item-actions'>
                 <button onClick={() => handleDelete(cartItem.id)}>Delete Item</button>
@@ -108,7 +114,7 @@ export function Cart(cartItem: cartItem) {
           <p>Your cart is empty</p>
         )}
         <div>
-          <p>Sum: ${cart.total_price}</p>
+          <p>Sum: ${totalPrice}</p>
           <button onClick={handleCheckout}>
             Checkout
           </button>
