@@ -8,34 +8,61 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  color: hsl(0, 0%, 9%);
+  gap: 20px;
 }
 
 .main-header-history {
+  margin-top: 20px;
+  font-family: 'Georgia', serif;
   font-size: 60px;
-  margin-bottom: 20px;
   text-align: center;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  color: #171717
 }
 
 .header-history {
+  font-family: 'Georgia', serif;
+  align-items: center;
+  text-align: center;
   font-size: 40px;
   margin-bottom: 20px;
+  color: #171717
 }
 
 .main-paragraph-history {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 20px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  width: 80%;
+  line-height: 1.8;
   padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
   font-style: italic;
   align-items: center;
   text-align: center;
+  color: #333;
 }
 
 .paragraph-history {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 20px;
-  padding: 20px;
-  font-style: italic;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.5px;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+
+/* Smaller footer on specific page */
+#small-footer {
+  font-size: 14px;
+  padding: 10px;
+  height: 15em;
 }

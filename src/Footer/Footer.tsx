@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { LogoutLink } from '../User_auth/LogoutLink.jsx'
 
 
-export function Footer() {
+export function Footer({ id }) {
   return (
-    <div className='footer-container'>
+    <div id={id} className='footer-container'>
       <div className='pdf-menu'>
         <a href="/Menu/Menu.pdf" target="_blank" rel="noopener noreferrer">Menu PDF</a>
         <p>Number: 847-8484-9888</p>
