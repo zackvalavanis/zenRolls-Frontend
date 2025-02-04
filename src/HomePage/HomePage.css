@@ -28,6 +28,13 @@ header {
   font-size: 1.25rem;
 }
 
+.links-home {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  gap: 20px;
+}
+
 header .link {
   display: flex;
   flex-direction: column;

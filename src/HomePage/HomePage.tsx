@@ -10,7 +10,10 @@ export function HomePage() {
       <div className='background-image1'>
         <header className="header">
           <h1>Zen Rolls</h1>
-          <Link to={localStorage.jwt ? '/menu' : '/login-page'} className='link'>Order</Link>
+          <div className='links-home'>
+            <Link className='link' to='/history-page'>History</Link>
+            <Link to={localStorage.jwt ? '/menu' : '/login-page'} className='link'>Order</Link>
+          </div>
         </header>
         <section className="section1">
         </section>

@@ -1,0 +1,41 @@
+.history-container {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  width: 100%;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.main-header-history {
+  font-size: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-history {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.main-paragraph-history {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 20px;
+  padding: 20px;
+  font-style: italic;
+  align-items: center;
+  text-align: center;
+}
+
+.paragraph-history {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 20px;
+  padding: 20px;
+  font-style: italic;
+}
