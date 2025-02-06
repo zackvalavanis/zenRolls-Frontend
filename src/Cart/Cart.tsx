@@ -3,6 +3,10 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Cart.css'
 import { Toast } from '../Components/Toast.tsx';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+
+
 
 type cartItem = {
   cartItem: {
@@ -12,12 +16,17 @@ type cartItem = {
   }
 }
 
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
+
 export function Cart(cartItem: cartItem) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const cartId = 1
   const [cart, setCart] = useState({})
   const [notification, setNotificationVisible] = useState(false)
   const [totalPrice, setTotalPrice] = useState(0)
+  const stripe = useStripe()
+  const elements = useElements()
 
 
   const cartIndex = async (cartId) => {
@@ -38,13 +47,36 @@ export function Cart(cartItem: cartItem) {
   },
     [cartId]);
 
-  const handleCheckout = (event) => {
+  const handleCheckout = async (event) => {
     event.preventDefault();
-    setNotificationVisible(true)
+    try {
+      const response = await axios.post(`${apiKey}/payments`, { total_amount: totalPrice * 100 })
+      const clientSecret = response.data.client_secret
+
+      const cardElement = elements.getElement(CardElement)
+      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+        }
+      });
+
+      if (error) {
+        console.error("Payment failed:", error.message);
+        alert("Payment failed!");
+      } else if (paymentIntent.status === 'succeeded') {
+        alert("Payment successful!");
+        // Further order confirmation logic here
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error.message);
+    }
+
+    // Notification logic
+    setNotificationVisible(true);
     setTimeout(() => {
       setNotificationVisible(false);
-    }, 2000)
-  }
+    }, 2000);
+  };
 
   const handleDelete = async (id) => {
     try {
