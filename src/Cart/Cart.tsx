@@ -4,19 +4,21 @@ import { useEffect, useState } from 'react'
 import './Cart.css'
 import { Toast } from '../Components/Toast.tsx';
 import { loadStripe } from '@stripe/stripe-js';
-import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 
 
-type cartItem = {
-  cartItem: {
-    food: {
-      image: string;
-    }
-  }
-}
+type CartItemType = {
+  id: number;
+  image_url: string;
+  name: string;
+  quantity: number;
+  price: number;
+  item_price: number;
+};
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
 
 
 export function Cart(cartItem: cartItem) {
@@ -27,6 +29,8 @@ export function Cart(cartItem: cartItem) {
   const [totalPrice, setTotalPrice] = useState(0)
   const stripe = useStripe()
   const elements = useElements()
+  const [id, setId] = useState()
+
 
 
   const cartIndex = async (cartId) => {
@@ -35,6 +39,7 @@ export function Cart(cartItem: cartItem) {
         params: { cart_id: cartId }
       })
       setCart(response.data)
+      setId(response.data.id)
       setTotalPrice(response.data.total_price || 0)
       console.log(response.data.total_price)
     } catch (error) {
@@ -47,29 +52,32 @@ export function Cart(cartItem: cartItem) {
   },
     [cartId]);
 
-  const handleCheckout = async (event) => {
+  const handleCheckout = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      const response = await axios.post(`${apiKey}/payments`, { total_amount: totalPrice * 100 })
-      const clientSecret = response.data.client_secret
 
-      const cardElement = elements.getElement(CardElement)
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-        }
-      });
+    // Simulate successful checkout for testing
+    const dummyClientSecret = "dummy_client_secret";
 
-      if (error) {
-        console.error("Payment failed:", error.message);
-        alert("Payment failed!");
-      } else if (paymentIntent.status === 'succeeded') {
-        alert("Payment successful!");
-        // Further order confirmation logic here
-      }
-    } catch (error) {
-      console.error("Error during checkout:", error.message);
+    // Simulate Stripe behavior
+    const { error, paymentIntent } = {
+      error: null,
+      paymentIntent: {
+        status: 'succeeded',
+      },
+    };
+
+    if (error) {
+      console.error("Payment failed:", error.message);
+      alert("Payment failed!");
+    } else if (paymentIntent.status === 'succeeded') {
+      console.log("Dummy Payment successful!");
+      alert("Payment successful!");
     }
+    setCart({ cart_items: [] });
+    setTotalPrice(0);
+
+    // Optionally send a request to the backend to clear the cart in the database
+    await axios.delete(`${apiKey}/cart.json`);
 
     // Notification logic
     setNotificationVisible(true);
@@ -147,9 +155,10 @@ export function Cart(cartItem: cartItem) {
         )}
         <div>
           <p>Sum: ${totalPrice}</p>
-          <button onClick={handleCheckout}>
-            Checkout
-          </button>
+          <form onSubmit={handleCheckout}>
+            {/* <CardElement /> */}
+            <button type="submit" disabled={!stripe}>Pay</button>
+          </form>
         </div>
       </div>
     </div >

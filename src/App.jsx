@@ -6,9 +6,13 @@ import { LoginPage } from './User_auth/LoginPage.jsx'
 // import { Logout } from './User_auth/Logout.jsx'
 import { SignupPage } from './User_auth/SignupPage.jsx'
 import { History } from './History/History.tsx'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 
 const router = createBrowserRouter([
@@ -50,8 +54,9 @@ const router = createBrowserRouter([
 
 function App() {
  return ( 
-
-  <RouterProvider router={router} />
+  <Elements stripe={stripePromise}>
+    <RouterProvider router={router} />
+  </Elements>
  )
 }
 
