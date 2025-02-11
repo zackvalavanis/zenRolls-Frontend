@@ -18,6 +18,10 @@ export function Menu() {
   const [notification, setIsNotificationShowing] = useState(false)
   const [notificationDetails, setNotificationDetails] = useState({})
 
+
+  const hasLoadedBefore = localStorage.getItem("pageLoaded");
+
+
   const handleQuantityChange = (foodId, value) => {
     setQuantities((prev) => ({
       ...prev,
@@ -25,22 +29,49 @@ export function Menu() {
     }));
   };
 
+  useEffect(() => {
+    const cachedData = localStorage.getItem('info');
+    console.log(cachedData)
+    const pageLoaded = localStorage.getItem('pageLoaded');
+
+    // Check if data is cached
+    if (cachedData) {
+      console.log('Using cached data');
+      setCategory(JSON.parse(cachedData)); // Parse and set cached data
+      console.log(cachedData);
+    } else {
+      // If the page hasn't been loaded before, fetch from API
+      if (!pageLoaded) {
+        handleIndex(); // Fetch data from API
+        localStorage.setItem("pageLoaded", true); // Mark the page as loaded
+      } else {
+        console.log('Page has already been loaded');
+      }
+    }
+  }, []);
+
+
   const handleIndex = async () => {
     console.log('handleIndex');
     try {
       // Fetch data from the API
       const response = await axios.get(`${apiKey}/categories.json`);
       console.log('Response', response.data);
-      // Set the food data to state
+      localStorage.setItem('info', JSON.stringify(response.data))
       setCategory(response.data);
     } catch (error) {
       console.error("Error fetching data", error.message);
     }
   };
 
-  useEffect(() => {
-    handleIndex();
-  }, []);
+  // useEffect(() => {
+  //   if (!hasLoadedBefore) {
+  //     handleIndex();
+  //     localStorage.setItem("pageLoaded", true)
+  //   } else {
+  //     console.log('page has already been loaded')
+  //   }
+  // }, [hasLoadedBefore]);
 
   const handleShow = (food) => {
     console.log('handleShow', food);
