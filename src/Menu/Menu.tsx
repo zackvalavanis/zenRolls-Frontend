@@ -31,14 +31,12 @@ export function Menu() {
 
   useEffect(() => {
     const cachedData = localStorage.getItem('info');
-    console.log(cachedData)
     const pageLoaded = localStorage.getItem('pageLoaded');
 
     // Check if data is cached
     if (cachedData) {
-      console.log('Using cached data');
+      // console.log('Using cached data');
       setCategory(JSON.parse(cachedData)); // Parse and set cached data
-      console.log(cachedData);
     } else {
       // If the page hasn't been loaded before, fetch from API
       if (!pageLoaded) {

@@ -55,10 +55,8 @@ export function Cart(cartItem: cartItem) {
   const handleCheckout = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Simulate successful checkout for testing
     const dummyClientSecret = "dummy_client_secret";
 
-    // Simulate Stripe behavior
     const { error, paymentIntent } = {
       error: null,
       paymentIntent: {
@@ -76,10 +74,8 @@ export function Cart(cartItem: cartItem) {
     setCart({ cart_items: [] });
     setTotalPrice(0);
 
-    // Optionally send a request to the backend to clear the cart in the database
     await axios.delete(`${apiKey}/cart.json`);
 
-    // Notification logic
     setNotificationVisible(true);
     setTimeout(() => {
       setNotificationVisible(false);
@@ -108,8 +104,6 @@ export function Cart(cartItem: cartItem) {
       console.error("Error deleting item", error.message);
     }
   };
-
-
 
   const handleClose = () => {
     setNotificationVisible(false)
