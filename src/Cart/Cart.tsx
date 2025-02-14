@@ -74,7 +74,7 @@ export function Cart(cartItem: cartItem) {
     setCart({ cart_items: [] });
     setTotalPrice(0);
 
-    await axios.delete(`${apiKey}/cart.json`);
+    await axios.post(`${apiKey}/cart.json`);
 
     setNotificationVisible(true);
     setTimeout(() => {
