@@ -8,6 +8,7 @@ import { SignupPage } from './User_auth/SignupPage.jsx'
 import { History } from './History/History.tsx'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import { Orders } from './Orders/Orders.tsx'
 
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       { 
         path: '/history-page', 
         element: <History />
+      }, 
+      { 
+        path: '/Orders', 
+        element: <Orders />
       }
     ]
   }

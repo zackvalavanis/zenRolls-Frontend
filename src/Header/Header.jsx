@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
+
 
 export function Header () { 
   return ( 
@@ -17,7 +21,12 @@ export function Header () {
         <Link 
           className='navigation-2' 
           to='/cart'>
-          Your Cart
+          <ShoppingCartIcon/>
+        </Link>
+        <Link 
+          className='navigation-3'
+          to='/Orders'>
+          Order History
         </Link>
       </div>
   )
