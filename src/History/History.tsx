@@ -15,9 +15,9 @@ export function History() {
           </h1>
           <p className='main-paragraph-history'>
             "Nestled in the heart of a bustling city, Zen Rolls invites guests to experience the harmonious blend of art and cuisine in a serene, welcoming atmosphere. With an ethos rooted in the Japanese principles of Zen, the restaurant offers not just a meal, but an immersive culinary experience that transports diners to a place of peace and balance."
-            <p className='sushi-mag'>
+            <span className='sushi-mag'>
               - Sushi Magazine
-            </p>
+            </span>
           </p>
           <h1 className='header-history'>
             The Philosophy:

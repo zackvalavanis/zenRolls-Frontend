@@ -18,16 +18,18 @@ export function Header () {
             >
           </img>
         </Link>
-        <Link 
-          className='navigation-2' 
-          to='/cart'>
-          <ShoppingCartIcon/>
-        </Link>
+        <div className='nav-right'>
         <Link 
           className='navigation-3'
           to='/Orders'>
           Order History
         </Link>
+        <Link 
+          className='navigation-2' 
+          to='/cart'>
+          <ShoppingCartIcon/>
+        </Link>
+      </div>
       </div>
   )
 }

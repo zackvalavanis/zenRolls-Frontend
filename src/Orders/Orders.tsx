@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
 
 type CartItems = {
   id: string,
@@ -12,7 +14,8 @@ type CartItems = {
 
 type OrderType = {
   id: string,
-  cart_items: CartItems[];
+  cart_items: CartItems[],
+  total_price: number;
 };
 
 
@@ -37,9 +40,11 @@ export function Orders() {
 
   return (
     <div>
+      <Header />
       {orders.map((order) => (
         <div key={order.id}>
           <h1>Order Number: {order.id}</h1>
+          <h1>Total Price: ${order.total_price}</h1>
           {order.cart_items.length > 0 ? (
             order.cart_items.map((item) => (
               <div key={item.id}>
@@ -54,6 +59,7 @@ export function Orders() {
           )}
         </div>
       ))}
+      <Footer />
     </div>
   )
 }
