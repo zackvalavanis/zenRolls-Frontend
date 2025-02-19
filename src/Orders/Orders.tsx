@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
+import './Orders.css'
 
 type CartItems = {
   id: string,
@@ -41,24 +42,28 @@ export function Orders() {
   return (
     <div>
       <Header />
-      {orders.map((order) => (
-        <div key={order.id}>
-          <h1>Order Number: {order.id}</h1>
-          <h1>Total Price: ${order.total_price}</h1>
-          {order.cart_items.length > 0 ? (
-            order.cart_items.map((item) => (
-              <div key={item.id}>
-                <img src={item.image_url} alt={item.name} width={50} />
-                <p>{item.name}</p>
-                <p>Price: ${item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-            ))
-          ) : (
-            <p>No Items in Cart</p>
-          )}
+      <div className='page'>
+        <div className='orders-container'>
+          {orders.map((order) => (
+            <div className='total-order' key={order.id}>
+              <h1>Order Number: {order.id}</h1>
+              <h1>Total Price: ${order.total_price}</h1>
+              {order.cart_items.length > 0 ? (
+                order.cart_items.map((item) => (
+                  <div className='cart-item' key={item.id}>
+                    <img src={item.image_url} alt={item.name} width={50} />
+                    <p>{item.name}</p>
+                    <p>Price: ${item.price}</p>
+                    <p>Quantity: {item.quantity}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No Items in Cart</p>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
       <Footer />
     </div>
   )
