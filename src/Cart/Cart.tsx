@@ -21,7 +21,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 
 
-export function Cart(cartItem: cartItem) {
+export function Cart(cartItem: CartItemType) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const cartId = 1
   const [cart, setCart] = useState({})
