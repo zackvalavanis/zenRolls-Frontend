@@ -101,7 +101,7 @@ export function Menu() {
         setIsNotificationShowing(true)
         setTimeout(() => {
           setIsNotificationShowing(false);
-        }, 2000);
+        }, 800);
         return () => clearTimeout(timeoutId)
       } else {
         console.error('Failed to add item to cart.', response.status)

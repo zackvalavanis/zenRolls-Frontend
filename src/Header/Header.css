@@ -33,7 +33,11 @@ h1 {
 }
 
 .image-logo {
-  height: 80px
+  height: 80px;
+}
+
+.image-logo:hover {
+  filter: brightness(0.5)
 }
 
 .nav-right {
@@ -52,6 +56,7 @@ h1 {
 
 .navigation-2:hover,
 .navigation-3:hover {
+  margin: 0 auto;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
   color: black;
