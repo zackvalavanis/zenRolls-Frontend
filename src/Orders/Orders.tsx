@@ -23,6 +23,8 @@ type OrderType = {
 export function Orders() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 2
 
   const handleIndex = async () => {
     try {
@@ -38,13 +40,18 @@ export function Orders() {
     handleIndex();
   }, [])
 
+  const totalPages = Math.ceil(orders.length / itemsPerPage)
+  const paginatedOrders = orders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  )
 
   return (
     <div>
       <Header />
       <div className='page'>
         <div className='orders-container'>
-          {orders.map((order) => (
+          {paginatedOrders.map((order) => (
             <div className='total-order' key={order.id}>
               <h1>Order Number: {order.id}</h1>
               <h1>Total Price: ${order.total_price}</h1>
@@ -63,6 +70,18 @@ export function Orders() {
             </div>
           ))}
         </div>
+        <div className="pagination"></div>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >Previous</button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >Next</button>
       </div>
       <Footer />
     </div>

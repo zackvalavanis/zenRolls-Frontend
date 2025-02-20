@@ -5,6 +5,7 @@ import './Cart.css'
 import { Toast } from '../Components/Toast.tsx';
 import { loadStripe } from '@stripe/stripe-js';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -30,6 +31,7 @@ export function Cart(cartItem: CartItemType) {
   const stripe = useStripe()
   const elements = useElements()
   const [id, setId] = useState()
+  const navigate = useNavigate();
 
 
 
@@ -80,6 +82,7 @@ export function Cart(cartItem: CartItemType) {
     setTimeout(() => {
       setNotificationVisible(false);
     }, 2000);
+    navigate('/Orders');
   };
 
   const handleDelete = async (id) => {
