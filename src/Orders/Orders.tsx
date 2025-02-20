@@ -24,7 +24,7 @@ export function Orders() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([])
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 2
+  const itemsPerPage = 3
 
   const handleIndex = async () => {
     try {
@@ -40,8 +40,10 @@ export function Orders() {
     handleIndex();
   }, [])
 
-  const totalPages = Math.ceil(orders.length / itemsPerPage)
-  const paginatedOrders = orders.slice(
+  const sortedOrders = [...orders].sort((a, b) => Number(b.id) - Number(a.id))
+
+  const totalPages = Math.ceil(sortedOrders.length / itemsPerPage)
+  const paginatedOrders = sortedOrders.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
@@ -70,18 +72,19 @@ export function Orders() {
             </div>
           ))}
         </div>
-        <div className="pagination"></div>
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >Previous</button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >Next</button>
+        <div className="pagination">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >Previous</button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >Next</button>
+        </div>
       </div>
       <Footer />
     </div>
