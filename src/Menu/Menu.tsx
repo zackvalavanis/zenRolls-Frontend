@@ -8,15 +8,34 @@ import { Toast } from '../Components/Toast.tsx';
 import React from 'react'
 
 
+type CategoryItem = {
+  id: number,
+  total_price: number
+}
+
+type NotificationDetails = {
+  name: string,
+  quantity: number,
+  message: string
+}
+
+type CurrentFood = {
+  name: string,
+  description: string,
+  image_url: string,
+  price: number,
+  inventory: number
+}
+
 export function Menu() {
   // State to hold food data, initially an empty array
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState<{ cart_items: CategoryItem[] }>({ cart_items: [] });
   const [isFoodVisible, setIsFoodVisible] = useState(false);
-  const [currentFood, setCurrentFood] = useState({});
+  const [currentFood, setCurrentFood] = useState<CurrentFood>({} as CurrentFood);
   const [quantities, setQuantities] = useState({})
   const apiKey = import.meta.env.VITE_API_KEY;
   const [notification, setIsNotificationShowing] = useState(false)
-  const [notificationDetails, setNotificationDetails] = useState({})
+  const [notificationDetails, setNotificationDetails] = useState<NotificationDetails>({} as NotificationDetails)
 
 
 
@@ -42,7 +61,7 @@ export function Menu() {
       // If the page hasn't been loaded before, fetch from API
       if (!pageLoaded) {
         handleIndex(); // Fetch data from API
-        localStorage.setItem("pageLoaded", true); // Mark the page as loaded
+        localStorage.setItem("pageLoaded", "true"); // Mark the page as loaded
       } else {
         console.log('Page has already been loaded');
       }
@@ -86,13 +105,15 @@ export function Menu() {
     try {
       const response = await axios.post(`${apiKey}/cart_items.json`, {
         food_id: FoodId,
-        quantity: quantity
+        foodName: foodName,
+        quantity: quantity,
+        message: `Added ${quantity} of ${foodName} to your cart`
       })
       if (response.status === 201) {
         console.log('successfully added to cart', response.data)
-        setNotificationDetails({ name: foodName, quantity: quantity })
+        setNotificationDetails({ name: foodName, quantity: quantity, message: `Added ${quantity} of ${foodName} to your cart` })
         setIsNotificationShowing(true)
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setIsNotificationShowing(false);
         }, 800);
         return () => clearTimeout(timeoutId)
@@ -170,7 +191,7 @@ export function Menu() {
           </>
         )}
       </Modal>
-      <Footer />
+      <Footer id={undefined} />
     </div>
   );
 }

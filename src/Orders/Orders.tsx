@@ -86,7 +86,7 @@ export function Orders() {
           >Next</button>
         </div>
       </div>
-      <Footer />
+      <Footer id={undefined} />
     </div>
   )
 }

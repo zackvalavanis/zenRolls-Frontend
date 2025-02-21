@@ -29,7 +29,7 @@ export function HomePage() {
           height='800px'
         />
       </section>
-      <Footer />
+      <Footer id={undefined} />
     </div>
   );
 }

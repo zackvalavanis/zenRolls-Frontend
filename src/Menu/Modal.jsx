@@ -1,4 +1,5 @@
 import "./Modal.css";
+import PropTypes from "prop-types"; 
 
 export function Modal({ children, show, onClose}) {
   if (show) {
@@ -13,4 +14,10 @@ export function Modal({ children, show, onClose}) {
       </div>
     );
   }
+}
+
+Modal.propTypes = { 
+  children: PropTypes.node.isRequired, 
+  show: PropTypes.bool.isRequired, 
+  onClose: PropTypes.func.isRequired
 }
