@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-
-
+import { useCart } from '../Components/CartCountProvider.tsx';
 
 export function Header () { 
+  const {cartCount} = useCart()
   return ( 
     <div className='header-container'>
       <Link 
@@ -28,7 +27,7 @@ export function Header () {
           className='navigation-2' 
           to='/cart'>
           <ShoppingCartIcon/>
-          <span id='cart-count' className='cart-badge'>0</span>
+          <span id='cart-count' className='cart-badge'>{cartCount}</span>
         </Link>
       </div>
       </div>

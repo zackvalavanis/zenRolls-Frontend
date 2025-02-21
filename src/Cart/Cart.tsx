@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css';
+import { useCart } from '../Components/CartCountProvider.tsx';
 
 type CartItemType = {
   id: number;
@@ -33,6 +34,8 @@ export function Cart() {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const { cartCount, setCartCount } = useCart();
+
 
   // Fetch cart data
   const cartIndex = async (cartId: number) => {
@@ -50,6 +53,11 @@ export function Cart() {
   useEffect(() => {
     cartIndex(cartId);
   }, [cartId]);
+
+  useEffect(() => {
+    const totalQuantity = cart.cart_items.reduce((sum, item) => sum + item.quantity, 0)
+    setCartCount(totalQuantity);
+  }, [cart.cart_items, setCartCount])
 
   // Handle item deletion
   const handleDelete = async (id: number) => {
@@ -96,6 +104,7 @@ export function Cart() {
     setTimeout(() => {
       setNotificationVisible(false);
     }, 2000);
+    setCartCount(prevCount => prevCount = 0)
     navigate('/Orders');
   };
 

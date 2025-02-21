@@ -9,6 +9,7 @@ import { History } from './History/History.tsx'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import { Orders } from './Orders/Orders.tsx'
+import { CartCountProvider } from './Components/CartCountProvider.tsx'
 
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -59,9 +60,11 @@ const router = createBrowserRouter([
 
 function App() {
  return ( 
+  <CartCountProvider>
   <Elements stripe={stripePromise}>
     <RouterProvider router={router} />
   </Elements>
+  </CartCountProvider>
  )
 }
 

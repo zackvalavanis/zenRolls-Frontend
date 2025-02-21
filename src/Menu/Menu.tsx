@@ -6,6 +6,7 @@ import { Header } from '../Header/Header.jsx';
 import { Footer } from '../Footer/Footer.tsx'
 import { Toast } from '../Components/Toast.tsx';
 import React from 'react'
+import { useCart } from '../Components/CartCountProvider.tsx';
 
 
 type CategoryItem = {
@@ -36,6 +37,7 @@ export function Menu() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [notification, setIsNotificationShowing] = useState(false)
   const [notificationDetails, setNotificationDetails] = useState<NotificationDetails>({} as NotificationDetails)
+  const { cartCount, setCartCount } = useCart();
 
 
 
@@ -113,6 +115,7 @@ export function Menu() {
         console.log('successfully added to cart', response.data)
         setNotificationDetails({ name: foodName, quantity: quantity, message: `Added ${quantity} of ${foodName} to your cart` })
         setIsNotificationShowing(true)
+        setCartCount(prevCount => prevCount + quantity)
         const timeoutId = setTimeout(() => {
           setIsNotificationShowing(false);
         }, 800);
