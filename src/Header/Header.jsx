@@ -28,6 +28,7 @@ export function Header () {
           className='navigation-2' 
           to='/cart'>
           <ShoppingCartIcon/>
+          <span id='cart-count' className='cart-badge'>0</span>
         </Link>
       </div>
       </div>

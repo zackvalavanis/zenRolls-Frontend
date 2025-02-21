@@ -19,6 +19,7 @@ export function Menu() {
   const [notificationDetails, setNotificationDetails] = useState({})
 
 
+
   const hasLoadedBefore = localStorage.getItem("pageLoaded");
 
 
@@ -62,15 +63,6 @@ export function Menu() {
     }
   };
 
-  // useEffect(() => {
-  //   if (!hasLoadedBefore) {
-  //     handleIndex();
-  //     localStorage.setItem("pageLoaded", true)
-  //   } else {
-  //     console.log('page has already been loaded')
-  //   }
-  // }, [hasLoadedBefore]);
-
   const handleShow = (food) => {
     console.log('handleShow', food);
     setIsFoodVisible(true);
@@ -85,6 +77,7 @@ export function Menu() {
   const close = () => {
     setIsNotificationShowing(false)
   }
+
 
   const handleAddToCart = async (event, FoodId, foodName) => {
     event.preventDefault();
