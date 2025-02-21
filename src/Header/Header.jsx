@@ -27,7 +27,7 @@ export function Header () {
           className='navigation-2' 
           to='/cart'>
           <ShoppingCartIcon/>
-          <span id='cart-count' className='cart-badge'>{cartCount}</span>
+          <span id='cart-count' className={`cart-badge ${cartCount > 0 ? 'visible': ''}`}>{cartCount > 0 ? cartCount : 0}</span>
         </Link>
       </div>
       </div>

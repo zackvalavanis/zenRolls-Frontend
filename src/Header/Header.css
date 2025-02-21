@@ -69,6 +69,22 @@
   border-radius: 50%;
   width: 20px;
   height: 20px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-badge.visible {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
