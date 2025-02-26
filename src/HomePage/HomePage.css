@@ -1,6 +1,6 @@
 /* HomePage.css */
 .background-image1 {
-  background-image: url("https://gardencare.uk.com/wp-content/uploads/2021/06/Court-Farm-Garden-Centre-The-Wisdom-of-Zen-Gardens-image.jpeg");
+  background-image: url("/Menu/Court-Farm-Garden-Centre-The-Wisdom-of-Zen-Gardens-image.jpeg");
   background-size: cover;
   /* Ensures the image covers the entire section */
   background-position: center;
@@ -55,7 +55,7 @@ header .link:hover {
 }
 
 .section2 {
-  background-image: url('https://exploreintrosems.stanford.edu/sites/g/files/sbiybj24136/files/styles/card_1900x950/public/media/image/rocas_en_un_jardin_zen_japones_1.jpg?h=adbb760b&itok=Pj1pBxFd');
+  background-image: url('/Menu/rocas_en_un_jardin_zen_japones_1.jpg');
   background-size: cover;
   /* Ensures the second image covers the entire section */
   background-position: center;
@@ -71,7 +71,7 @@ header .link:hover {
 }
 
 .section3 {
-  background-image: url('https://thedesignstory.com/assets/uploader/editor/editor-photo-8--qfjk-1681401620.jpg?w=1000');
+  background-image: url('/Menu/editor-photo-8--qfjk-1681401620.jpg');
   background-size: cover;
   /* Ensures the second image covers the entire section */
   background-position: center;
