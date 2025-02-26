@@ -16,6 +16,13 @@ export function Footer({ id }) {
           <Link to='/signup-page'>Signup</Link>
           <LogoutLink />
         </div>
+        <div className='order-history-container'>
+          {localStorage.jwt ? <Link
+            className='order-history'
+            to='/Orders'>
+            Order History
+          </Link> : ''}
+        </div>
       </div>
     </div>
   )

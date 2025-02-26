@@ -18,11 +18,6 @@ export function Header () {
           </img>
         </Link>
         <div className='nav-right'>
-          {localStorage.jwt ? <Link 
-          className='navigation-3'
-          to='/Orders'>
-          Order History
-        </Link> : ''}
         <Link 
           className='navigation-2' 
           to='/cart'>

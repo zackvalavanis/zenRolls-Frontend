@@ -129,7 +129,7 @@ export function Menu() {
   };
 
   return (
-    <div>
+    <div className='container-total'>
       <Header />
       <div className='container-sushi-menu'>
         {Array.isArray(category) && category.length > 0 ? (
@@ -182,7 +182,7 @@ export function Menu() {
           setNotification={setIsNotificationShowing}
           type='add-to-cart' />
       </div>
-
+      <Footer id={undefined} />
       <Modal show={isFoodVisible} onClose={handleClose}>
         {currentFood && (
           <>
@@ -190,11 +190,10 @@ export function Menu() {
             <p>{currentFood.description}</p>
             <img className="image" src={currentFood.image_url} alt={currentFood.name} />
             <p>Price: {currentFood.price}</p>
-            <p>Inventory: {currentFood.inventory}</p>
+            {/* <p>Inventory: {currentFood.inventory}</p> */}
           </>
         )}
       </Modal>
-      <Footer id={undefined} />
     </div>
   );
 }

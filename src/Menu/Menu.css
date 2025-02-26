@@ -1,12 +1,20 @@
 /* Container for the sushi menu */
+.container-total {
+  height: auto;
+
+}
+
+
+
+
+
 .container-sushi-menu {
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Space between categories */
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   padding: 10px;
-  /* Add padding for mobile to prevent edge overlap */
 }
 
 /* Each category item */
