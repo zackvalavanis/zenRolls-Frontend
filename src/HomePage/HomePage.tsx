@@ -9,7 +9,7 @@ export function HomePage() {
     <div>
       <div className='background-image1'>
         <header className="header">
-          <h1>Zen Rolls</h1>
+          <h1 className='header-text'>Zen Rolls</h1>
           <div className='links-home'>
             <Link className='link' to='/history-page'>History</Link>
             <Link to={localStorage.jwt ? '/menu' : '/login-page'} className='link'>Order</Link>
@@ -20,15 +20,6 @@ export function HomePage() {
       </div>
       <section className="section2"></section>
       <section className="section3"></section>
-      <section className='section4'>
-        <img
-          className='menu-image'
-          src='Menu/Menu_Image.jpeg'
-          alt='Menu'
-          width='80%'
-          height='800px'
-        />
-      </section>
       <Footer id={undefined} />
     </div>
   );

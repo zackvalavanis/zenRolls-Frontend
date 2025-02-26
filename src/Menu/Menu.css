@@ -2,10 +2,11 @@
 .container-sushi-menu {
   display: flex;
   flex-direction: column;
-  /* Stack categories vertically */
   gap: 20px;
   /* Space between categories */
   margin-bottom: 100px;
+  padding: 10px;
+  /* Add padding for mobile to prevent edge overlap */
 }
 
 /* Each category item */
@@ -21,7 +22,8 @@
 
 /* Category name */
 .category-name {
-  font-size: 2.0rem;
+  font-size: 2rem;
+  /* Adjust font size for mobile */
   text-decoration: underline;
   margin-bottom: 10px;
   text-align: center;
@@ -30,12 +32,13 @@
 /* Container for food items in a category */
 .food-items {
   display: flex;
-  justify-content: start;
-  /* Align items horizontally */
+  justify-content: center;
+  /* Center align the food items */
   gap: 20px;
-  /* Space between each food item */
   flex-wrap: wrap;
   /* Wrap if there are too many food items */
+  justify-content: center;
+  /* Center align content for mobile */
 }
 
 /* Individual food item */
@@ -44,20 +47,23 @@
   flex-direction: column;
   align-items: center;
   /* Center food item content */
-  width: 250px;
-  /* Fixed width for each food item */
+  width: 100%;
+  /* Take full width on mobile */
+  max-width: 200px;
+  /* Restrict the max width for mobile */
   text-align: center;
-  /* Center text */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
+  margin-bottom: 20px;
+  /* Space between food items */
 }
 
 /* Image styling */
 .image {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -85,4 +91,43 @@
 .order-button:hover,
 .more-info-button:hover {
   background-color: rgb(100, 100, 138);
+}
+
+/* 📱 Mobile Optimizations */
+@media screen and (max-width: 768px) {
+
+  /* Adjusting the font size of category names for mobile */
+  .category-name {
+    font-size: 2rem;
+    /* Smaller font size for mobile */
+  }
+
+  /* Adjust the width of food items */
+  .food-item {
+    width: 100%;
+    /* Take full width on smaller screens */
+    max-width: 90%;
+    /* Allow food items to be slightly larger but within limits */
+    margin-bottom: 20px;
+    /* Ensure there's space between items */
+  }
+
+  /* Ensure food items are centered properly */
+  .food-items {
+    justify-content: center;
+  }
+
+  /* Adjust image size */
+  .image {
+    height: 150px;
+    width: 150px;
+  }
+
+  /* Adjust button size for mobile */
+  .order-button,
+  .more-info-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
 }
