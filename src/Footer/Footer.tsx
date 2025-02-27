@@ -12,12 +12,14 @@ export function Footer({ id }) {
         <p>Number: 847-8484-9888</p>
         <p>Email: ZenRolls@email.com</p>
         <div className='link-pages'>
-          <Link to='/login-page'>Login</Link>
-          <Link to='/signup-page'>Signup</Link>
-          <LogoutLink />
+          {localStorage.getItem('jwt') ? <LogoutLink /> :
+            (
+              <><Link to='/login-page'>Login</Link><Link to='/signup-page'>Signup</Link></>
+            )}
+
         </div>
         <div className='order-history-container'>
-          {localStorage.jwt ? <Link
+          {localStorage.getItem('jwt') ? <Link
             className='order-history'
             to='/Orders'>
             Order History

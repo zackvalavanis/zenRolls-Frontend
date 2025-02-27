@@ -30,6 +30,12 @@ export function LoginPage() {
   };
 
   return (
+    <div>
+      <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center'}}>
+        <p >To try the order functionality, use the test login provided below or create an account using the <a style={{ color: 'black'}}href='/signup-page'>Signup Page</a>.</p>
+        <p>Email: bob@email.com</p>
+        <p>Password: password</p>
+      </div>
   <div className='login-page' id="login">
     <div className='login'>
       <h1 className='header-login'>Login</h1>
@@ -52,6 +58,7 @@ export function LoginPage() {
         </form>
       </div>
     </div>
+  </div>
   </div>
   );
 }
