@@ -81,6 +81,7 @@ export function Orders() {
             Page {currentPage} of {totalPages}
           </span>
           <button
+
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
           >Next</button>
