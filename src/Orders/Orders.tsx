@@ -61,7 +61,7 @@ export function Orders() {
               </div>
               {order.cart_items.length > 0 ? (
                 order.cart_items.map((item) => (
-                  <div className='cart-item' key={item.id}>
+                  <div className='cart-items' key={item.id}>
                     <img src={item.image_url} alt={item.name} width={50} />
                     <p>{item.name}</p>
                     <p>Price: ${item.price}</p>
