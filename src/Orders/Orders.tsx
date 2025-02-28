@@ -55,8 +55,10 @@ export function Orders() {
         <div className='orders-container'>
           {paginatedOrders.map((order) => (
             <div className='total-order' key={order.id}>
-              <h1>Order Number: {order.id}</h1>
-              <h1>Total Price: ${order.total_price}</h1>
+              <div className='order-header'>
+                <h1>Order Number: {order.id}</h1>
+                <h1>Total Price: ${order.total_price}</h1>
+              </div>
               {order.cart_items.length > 0 ? (
                 order.cart_items.map((item) => (
                   <div className='cart-item' key={item.id}>
