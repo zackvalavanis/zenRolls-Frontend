@@ -1,62 +1,153 @@
+.header-cart {
+  text-align: center;
+}
+
+.header-container {
+  width: 100%;
+  /* Ensures it stretches across the whole width */
+  padding: 0 20px;
+  /* Optional: Add padding to give it some spacing from the edges */
+  box-sizing: border-box;
+  /* Ensures padding doesn't cause overflow */
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
 .cart-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px;
-  position: relative;
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.cart-container.dimmed {
-  opacity: 0.5;
-  pointer-events: none;
-  /* Prevent interactions with the cart while toast is active */
-}
-
-.cart-container.blurred {
-  filter: blur(2px);
-  pointer-events: none;
-  /* Prevent interactions */
-}
 
 .cart-item {
-  display: grid;
-  grid-template-columns: 100px 2fr;
-  /* Image, item details (name, quantity, price), actions */
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  width: 750px;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 5px;
+  margin: 0 auto;
 }
 
 .image-cart {
   height: 100px;
   width: 100px;
   object-fit: cover;
+  flex-shrink: 0;
+  /* Prevents image from shrinking */
 }
 
 .item-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1em;
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
 }
 
 .item-details p {
-  margin: 0;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* Makes sure item-details take the full width available */
+  justify-content: space-between;
+  /* Ensures details are aligned horizontally */
 }
 
 .item-actions {
+  display: flex;
+  justify-content: space-between;
   grid-column: 5;
-  /* Makes the delete button appear in the last column */
   text-align: right;
 }
 
 .item-quantity,
 .item-price {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
 
 .item-actions {
   text-align: right;
+}
+
+.pay-container {
+  text-align: center;
+  width: 200px
+}
+
+.pay-button {
+  width: 100px
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    width: 100%;
+    /* Ensures it stretches fully on mobile */
+    padding: 0 10px;
+    /* Optional: Add padding for spacing */
+  }
+
+  .cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    /* Stacks the cart items vertically */
+    width: 100%;
+    /* Ensures the cart item takes full width */
+    max-width: 100%;
+    /* Prevents overflow */
+    margin: 0 auto;
+    /* Keeps the item centered */
+  }
+
+  .item-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .item-details p {
+    width: 100%;
+    justify-content: center;
+    /* Centers the details */
+  }
+
+  .image-cart {
+    margin-bottom: 10px;
+  }
+
+  .item-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .pay-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .pay-button {
+    width: 60%;
+    padding: 10px;
+    max-width: 200px;
+  }
 }

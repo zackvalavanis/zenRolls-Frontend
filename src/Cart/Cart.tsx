@@ -6,6 +6,7 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 import { useCart } from '../Components/CartCountProvider.tsx';
+import { Header } from '../Header/Header.jsx';
 
 type CartItemType = {
   id: number;
@@ -114,7 +115,10 @@ export function Cart() {
 
   return (
     <div>
-      <h1>This is your cart</h1>
+      <div className='header-container'>
+        <Header />
+      </div>
+      <h1 className='header-cart'>Your Cart</h1>
       <div className='cart-container'>
         {cart.cart_items.length > 0 ? (
           cart.cart_items.map((cartItem) => (
@@ -149,12 +153,12 @@ export function Cart() {
         ) : (
           <p>Your cart is empty</p>
         )}
-        <div>
+        <div className='pay-container'>
           <p>Sum: ${totalPrice}</p>
           <form onSubmit={handleCheckout}>
             {/* Uncomment and set up the Stripe checkout */}
             {/* <CardElement /> */}
-            <button type="submit" disabled={!stripe}>Pay</button>
+            <button className='pay-button' type="submit" disabled={!stripe}>Pay</button>
           </form>
         </div>
       </div>
